@@ -10,7 +10,7 @@
 
 #define SLAVE_ADDRESS 0x04
 int number = 0;
-int state = 0;
+// int state = 0;
 
 void setup() 
 {
@@ -21,7 +21,7 @@ void setup()
   
   // define callbacks for i2c communication
   
-  // Wire.onReceive(receiveData);
+  Wire.onReceive(receiveData);
   Wire.onRequest(sendData);
   
   Serial.println("Ready!");
@@ -33,6 +33,15 @@ void loop()
 }
 
 // callback for received data
+void receiveData(int byteCount)
+{
+  if(Wire.available())
+  {
+    number = Wire.read();
+    Serial.print("Data received: ");
+    Serial.println(number);
+  }
+}
 /*
 void receiveData(int byteCount)
 {
