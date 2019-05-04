@@ -1,16 +1,18 @@
 import smbus
 import time
 
-bus = smbus.SMBus(0)
+bus = smbus.SMBus(1)
 address = 0x04
 
 def main():
     while (True):
-        var = input("Enter a Number to Send:")
+        var = input("Enter a number to send:")
         writeBytes(var)
+        print("Sending: ", var)
         time.sleep(1)
+
         returnVar = readBytes()
-        print(returnVar)
+        print("Recieved: ", returnVar)
         time.sleep(1)
 
 def readBytes():
