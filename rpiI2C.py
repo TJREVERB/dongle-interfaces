@@ -6,8 +6,10 @@ address = 0x04
 
 def main():
     while (True):
-        var = input("Enter a number to send:")
-        writeBytes(var)
+        var = input("Enter a number to send (-1 to exit): ")
+        if(var=="-1"):
+            break
+        writeBytes(int(var))
         print("Sending: ", var)
         time.sleep(1)
 
