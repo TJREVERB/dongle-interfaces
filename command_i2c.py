@@ -28,6 +28,7 @@ def send_command():
 def send_request():
     to_send = 2
     bus.write_byte(address, to_send)
+    bus.read_byte(address)
     # call method on intermediate pi and wait for a response @max
 
 if __name__ == "__main__":
