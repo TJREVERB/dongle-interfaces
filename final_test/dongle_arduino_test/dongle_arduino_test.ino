@@ -1,7 +1,7 @@
 #include <Wire.h>
 #include <SoftwareSerial.h>
 #define SLAVE_ADDRESS 0x08
-
+int data = 0;
 SoftwareSerial gps(10,11);
 void setup() {
   // put your setup code here, to run once:
@@ -34,7 +34,7 @@ void receiveData(int byteCount){
 }
 
 void sendData(){
-  delay(100);
+  Wire.write(data);
 }
 
 void sendToGPS(){
@@ -45,10 +45,8 @@ void sendToGPS(){
 }
 
 void readFromGPS(){
-  Serial.println("Listening from GPS");
   gps.write("Send Data");
   gps.listen();
-  int data = gps.read();
-  Wire.write(data);
-  Serial.println("Sent to Pi");
+  data = gps.read();
+  
 }
