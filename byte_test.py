@@ -3,6 +3,7 @@ import time
 from datetime import datetime
 
 bus = smbus.SMBus(1)
+time.sleep(1)
 address = 0x08
 
 
